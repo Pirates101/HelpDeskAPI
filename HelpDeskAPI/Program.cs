@@ -1,3 +1,6 @@
+using HelpDeskAPI.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace HelpDeskAPI
 {
     public class Program
@@ -12,6 +15,12 @@ namespace HelpDeskAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<HelpDeskContext>(options =>
+            {
+                options.UseSqlServer("Server=localhost;Database=HelpDeskDB;Trusted_Connection=True");
+            }
+);
 
             var app = builder.Build();
 
