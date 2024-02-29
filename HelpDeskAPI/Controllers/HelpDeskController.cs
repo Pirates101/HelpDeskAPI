@@ -20,6 +20,7 @@ namespace HelpDeskAPI.Controllers
         // GET: api/<HelpDeskController>
         [HttpGet]
         public IActionResult Get()
+        
         {
             var response = _helpDeskcontext.Tickets.ToList();
             return Ok(response);
