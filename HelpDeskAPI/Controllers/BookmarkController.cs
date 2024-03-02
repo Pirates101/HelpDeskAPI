@@ -21,7 +21,7 @@ namespace HelpDeskAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var response = _helpDeskcontext.BookmarkedTickets.ToList();
+            var response = _helpDeskcontext.FavoriteTickets.ToList();
             return Ok(response);
         }
 
@@ -30,7 +30,7 @@ namespace HelpDeskAPI.Controllers
         public IActionResult Get([FromRoute] int id)
         {
 
-            var ticket = _helpDeskcontext.BookmarkedTickets.Find(id);
+            var ticket = _helpDeskcontext.FavoriteTickets.Find(id);
             return ticket != null
                 ? Ok(ticket)
                 : NotFound();
@@ -40,7 +40,7 @@ namespace HelpDeskAPI.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] BookmarkedTicketModel value)
         {
-            var ticket = _helpDeskcontext.BookmarkedTickets.Add(value);
+            var ticket = _helpDeskcontext.FavoriteTickets.Add(value);
 
             _helpDeskcontext.SaveChanges();
 
@@ -59,11 +59,11 @@ namespace HelpDeskAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] int id)
         {
-            var ticket = _helpDeskcontext.BookmarkedTickets.Find(id);
+            var ticket = _helpDeskcontext.FavoriteTickets.Find(id);
 
             if (ticket != null)
             {
-                _helpDeskcontext.BookmarkedTickets.Remove(ticket);
+                _helpDeskcontext.FavoriteTickets.Remove(ticket);
                 _helpDeskcontext.SaveChanges();
                 return NoContent();
             }

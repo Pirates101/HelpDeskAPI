@@ -12,6 +12,6 @@ namespace HelpDeskAPI.Services
 
         public DbSet<TicketModel> Tickets { get; set; }
 
-        public DbSet<BookmarkedTicketModel> BookmarkedTickets { get; set; }
+        public DbSet<BookmarkedTicketModel> FavoriteTickets { get; set; }
     }
 }
